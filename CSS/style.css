@@ -1,0 +1,65 @@
+.hero{
+     background-image: url('https://images.pexels.com/photos/46216/sunflower-flowers-bright-yellow-46216.jpeg');
+     background-size: cover;
+     background-position: center;
+     height: 100vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     color: white;
+     position: relative;
+     text-align: center;
+     font-family: Arial, Helvetica, sans-serif;
+}
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    height: 100px;
+    width: 100px;
+}
+.hero-content {
+    text-align: center;
+}
+.typescript {
+    font-size: 3rem;
+    font-weight: bold;
+}
+.content {
+    position: relative;
+    z-index: 1;
+}
+.btn{
+    padding: 10px 20px;
+    background-color: rgb(21, 123, 5);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    animation: bounce 2s ease;
+}
+.typewriter {
+    display: inline-block;
+    overflow: hidden;
+    border-right: 0.15em solid rgb(243, 240, 234);
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: 0.15em;
+    animation: typing 4s steps(30, end),blink-caret 0.75s step-end infinite;
+}
+.slide{
+    width: 100px;
+    height: 100px;
+    background-color: rgb(234, 234, 241);
+    border-radius: 50%;
+    animation: slide 2s ease-in-out infinite alternate,colorchange 3s ease-in-out infinite alternate;
+}
+@keyframes slide {
+    from { transform: translateX(0); }
+    to { transform: translateX(500px); }
+}
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
