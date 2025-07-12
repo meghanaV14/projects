@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donation Eligibility</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eef2f7;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #004080;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 0;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .results {
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #004080;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        Blood Donation Eligibility Checker
+    </header>
+
+    <main>
+        <form action="" id="eligibility_form">
+            <label for="age">Age</label>
+            <input type="number" id="age" required>
+
+            <label for="bld_cnt">Blood Count</label>
+            <input type="number" id="bld_cnt" required>
+
+            <label for="hemo">Hemoglobin</label>
+            <input type="number" id="hemo" required>
+
+            <label for="Bs">Blood Sugar Levels</label>
+            <input type="number" id="Bs" required>
+
+            <input type="submit" value="Check Eligibility" id="check_eligibility">
+
+            <div class="results" id="results"></div>
+        </form>
+    </main>
+
+    <footer>
+        © 2025 HealthCare Organization | All rights reserved
+    </footer>
+
+    <script>
+        document.getElementById("eligibility_form").addEventListener("submit", function(event) {
+            event.preventDefault();
+        
+            let age = parseInt(document.getElementById("age").value);
+            let bld_cnt = parseInt(document.getElementById("bld_cnt").value);
+            let hemo = parseFloat(document.getElementById("hemo").value);
+            let Bs = parseFloat(document.getElementById("Bs").value);
+            let results = document.getElementById("results");
+
+            if(age >= 18){
+                if(bld_cnt > 100000){
+                    if(hemo > 12){
+                        if(Bs >= 80 && Bs <= 120){
+                            results.innerHTML = "You are eligible to donate blood.";
+                            results.style.color = "green";
+                        } else {
+                            results.innerHTML = "Not eligible due to abnormal blood sugar levels.";
+                            results.style.color = "red";
+                        }
+                    } else {
+                        results.innerHTML = "Not eligible due to low hemoglobin.";
+                        results.style.color = "red";
+                    }
+                } else {
+                    results.innerHTML = "Not eligible due to low blood count.";
+                    results.style.color = "red";
+                }
+            } else {
+                results.innerHTML = "Not eligible due to age.";
+                results.style.color = "red";
+            }
+        });
+    </script>
+</body>
+</html>
